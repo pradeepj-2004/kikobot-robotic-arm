@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="meskobot">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="arm">
+        <link name="world"/>
+        <link name="base_link"/>
+        <link name="shoulder_lnk_1"/>
+        <link name="elbow_link_1"/>
+        <link name="wrist_link_1"/>
+        <link name="wrist_link_2_1"/>
+        <link name="wrist_link_3_1"/>
+        <link name="end_eff_v1_1"/>
+        <joint name="virtual_joint"/>
+        <joint name="Revolute 28"/>
+        <joint name="Revolute 29"/>
+        <joint name="Revolute 30"/>
+        <joint name="Revolute 31"/>
+        <joint name="Revolute 32"/>
+        <joint name="Revolute 33"/>
+        <chain base_link="base_link" tip_link="end_eff_v1_1"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="home" group="arm">
+        <joint name="Revolute 28" value="0"/>
+        <joint name="Revolute 29" value="-0.7463"/>
+        <joint name="Revolute 30" value="-2.1348"/>
+        <joint name="Revolute 31" value="-1.57"/>
+        <joint name="Revolute 32" value="-1.57"/>
+        <joint name="Revolute 33" value="0"/>
+    </group_state>
+    
+
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="end_eff_v1_1" parent_link="wrist_link_3_1" group="arm"/>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="base_link" link2="camera_link" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="shoulder_lnk_1" reason="Adjacent"/>
+    <disable_collisions link1="camera_link" link2="elbow_link_1" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="end_eff_v1_1" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="shoulder_lnk_1" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="wrist_link_1" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="wrist_link_2_1" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="wrist_link_3_1" reason="Never"/>
+    <disable_collisions link1="elbow_link_1" link2="shoulder_lnk_1" reason="Adjacent"/>
+    <disable_collisions link1="elbow_link_1" link2="wrist_link_1" reason="Adjacent"/>
+    <disable_collisions link1="end_eff_v1_1" link2="wrist_link_1" reason="Never"/>
+    <disable_collisions link1="end_eff_v1_1" link2="wrist_link_2_1" reason="Never"/>
+    <disable_collisions link1="end_eff_v1_1" link2="wrist_link_3_1" reason="Adjacent"/>
+    <disable_collisions link1="wrist_link_1" link2="wrist_link_2_1" reason="Adjacent"/>
+    <disable_collisions link1="wrist_link_1" link2="wrist_link_3_1" reason="Never"/>
+    <disable_collisions link1="wrist_link_2_1" link2="wrist_link_3_1" reason="Adjacent"/>
+</robot>

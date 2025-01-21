@@ -1,0 +1,82 @@
+# Previous version
+# controller_manager:
+#   ros__parameters:
+#     update_rate: 100
+#     use_sim_time: true
+
+#     joint_state_broadcaster:
+#       type: joint_state_broadcaster/JointStateBroadcaster
+
+#     arm_controller:
+#       type: joint_trajectory_controller/JointTrajectoryController
+
+# arm_controller:
+#   ros__parameters:
+#     joints:
+#       - Revolute 28    
+#       - Revolute 29
+#       - Revolute 30    
+#       - Revolute 31   
+#       - Revolute 32
+#       - Revolute 33   
+     
+    
+#     command_interfaces:
+#       - position
+#       - velocity
+    
+#     state_interfaces:
+#       - position
+#       - velocity
+    
+#     #Ros2_control scripts
+#     action_monitor_rate: 20.0
+
+#     allow_partial_joints_goal: false
+
+#      #Ros2_control scripts
+
+#     open_loop_control: true
+#     allow_integration_in_goal_trajectories: true
+
+
+#Current version
+
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+    use_sim_time: true
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+    
+    # gripper_controller:
+    #   type: joint_trajectory_controller/JointTrajectoryController   
+     
+arm_controller:
+  ros__parameters:
+    joints:
+      - Revolute 28
+      - Revolute 29
+      - Revolute 30
+      - Revolute 31
+      - Revolute 32
+      - Revolute 33  
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+  
+
+    
+
+
+

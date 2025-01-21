@@ -1,0 +1,9 @@
+# Default initial positions for meskobot's ros2_control fake system
+
+initial_positions:
+  Revolute 28: 0
+  Revolute 29: 0
+  Revolute 30: 0
+  Revolute 31: 0
+  Revolute 32: 0
+  Revolute 33: 0

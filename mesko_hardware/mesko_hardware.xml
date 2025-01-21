@@ -1,0 +1,9 @@
+<library path="mesko_hardware">
+  <class name="mesko_hardware/MeskoHardware"
+         type="mesko_hardware::MeskoHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      The ros2_control meskobot hardware using a system hardware interface-type. It uses position command and position state interface.
+    </description>
+  </class>
+</library>

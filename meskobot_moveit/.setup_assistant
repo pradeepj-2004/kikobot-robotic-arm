@@ -1,0 +1,23 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: meskobot_description
+    relative_path: urdf/meskobot.xacro
+  srdf:
+    relative_path: config/meskobot.srdf
+  package_settings:
+    author_name: Pradeep J
+    author_email: pradeepj@iitbhilai.ac.in
+    generated_timestamp: 1731779662
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
